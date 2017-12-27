@@ -1,0 +1,29 @@
+
+public class Helper
+{
+    static final String PREF_USER_NAME= "username";
+
+    static SharedPreferences getSharedPreferences(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    public static void setUserContext(Context context, String string)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(PREF_USER_NAME, string);
+        editor.commit();
+    }
+
+    public static String getUserContext(Context context)
+    {
+        return getSharedPreferences(context).getString(PREF_USER_NAME,"");
+    }
+
+    public static void clearUserName(Context context)
+    {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.clear();
+        editor.commit();
+    }
+}
